@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "start": "tsc --watch",
-        "start:build": "nodemon ./dist/index.js",
+        "start:build": "cross-env PORT=3476 nodemon ./dist/index.js",
         "test": "jest --watchAll --coverage"
     },
     "author": "",
@@ -41,5 +41,8 @@
         "roots": [
             "<rootDir>/dist/"
         ]
+    },
+    "dependencies": {
+        "cross-env": "^7.0.3"
     }
 }
