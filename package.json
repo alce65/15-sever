@@ -11,6 +11,12 @@
     },
     "author": "",
     "license": "ISC",
+    "dependencies": {
+        "@types/inquirer": "^8.2.1",
+        "cross-env": "^7.0.3",
+        "inquirer": "^9.0.0",
+        "morgan": "^1.10.0"
+    },
     "devDependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.17.12",
         "@types/jest": "^28.1.2",
@@ -41,8 +47,5 @@
         "roots": [
             "<rootDir>/dist/"
         ]
-    },
-    "dependencies": {
-        "cross-env": "^7.0.3"
     }
 }
