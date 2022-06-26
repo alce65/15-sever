@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3204;
 
 const answers: iInquirerAnswers = await setup();
 
+interface ServerError extends Error {
+    info: string;
+}
+
 export const server = http.createServer(async (req, res) => {
     const path = url.parse(req.url as string).path;
     let dataFile: string = `./data/${path}.txt`;
@@ -21,8 +25,8 @@ export const server = http.createServer(async (req, res) => {
         const template = `<h1>Hola, soy ${answers.name}</h1><p>${data}</p>`;
         res.end(template);
     } catch (err) {
-        res.end('Error de lectura');
-        server.emit('error', err);
+        (err as ServerError).info = 'Error de lectura';
+        server.emit('error', err, res);
     }
 
     /*     const path = url.parse(req.url as string).path;
@@ -53,6 +57,7 @@ server.listen(PORT);
 console.log(`Server de ${answers.name}
 listening from ${answers.country} in port ${PORT}`);
 
-server.on('error', (err) => {
-    console.error((err as Error).message);
+server.on('error', (err: ServerError, res: http.ServerResponse) => {
+    res.end(err.info);
+    console.error(err.message);
 });
