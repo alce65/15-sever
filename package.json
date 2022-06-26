@@ -1,15 +1,16 @@
 {
-    "name": "14-node",
+    "name": "15-server",
     "version": "1.0.0",
-    "description": "",
+    "description": "Simple Http server with Node Http",
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "tsc --watch",
+        "start": "run-p start:ts start:build",
+        "start:ts": "tsc --watch",
         "start:build": "cross-env PORT=3476 nodemon ./dist/index.js",
         "test": "jest --watchAll --coverage"
     },
-    "author": "",
+    "author": "Alejandro Cerezo Lasne",
     "license": "ISC",
     "dependencies": {
         "@types/inquirer": "^8.2.1",
@@ -29,6 +30,7 @@
         "eslint-plugin-import": "^2.26.0",
         "jest": "^28.1.1",
         "nodemon": "^2.0.16",
+        "npm-run-all": "^4.1.5",
         "typescript": "^4.7.4"
     },
     "prettier": {
