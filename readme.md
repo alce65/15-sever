@@ -6,9 +6,8 @@
 
     -   Para todos los casos se emplearán **módulos nativos de ES6**
         -   package.json define `type="module"`
-        -   ESLint utiliza un plugin, eslint-plugin-import
-        -   Jest utiliza un plugin de Babel
     -   ESLint utiliza
+        -   un plugin, eslint-plugin-import, para configurar ES Modules
         -   el conjunto de reglas "eslint:recommended"
         -   el plugin y las reglas para prettier
         -   el plugin con el parser de Typescript
@@ -16,6 +15,10 @@
         -   `"target"` y `"module"`: `"ESNext"`
         -   `"moduleResolution"`: `"node"`
         -   `"rootDir"`: `"./src"` y `"outDir"`: `"./dist"`
+    -   Jest
+        -   Jest utiliza un plugin de Babel para configurar ES Modules
+        -   Define el `roots`: `<rootDir>/dist/` para testear directamente el JS compilado
+        -   En el `env` de ESLint se define `jest` como true
 
 -   Definir los **comandos de npm** necesarios para
 
